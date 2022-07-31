@@ -1,0 +1,5 @@
+<ul *ngIf="links.length; else noLinkes" class="col-12">
+  <side-nav-link *ngFor="let link of links; index as i;" [link]="link.link" [text]="link.text" [icon]="link.icon"></side-nav-link>
+</ul>
+
+<ng-template #noLinkes>there is no Links to show</ng-template>
