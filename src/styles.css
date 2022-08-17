@@ -1,0 +1,23 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-size {
+  background-color: white;
+  height: 50px;
+  width: 50px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+}

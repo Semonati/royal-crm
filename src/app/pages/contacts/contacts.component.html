@@ -1,0 +1,58 @@
+<page-header
+  title="contacts"
+  subtitle="this is the contacts page"
+  icon="fas fa-users"
+></page-header>
+
+<div class="mb-2">
+  <a
+    routerLink="add-contact"
+    class="btn btn-outline-primary"
+    title="Add new contact"
+    role="button"
+    >{{ "add contact" | firstLetterUppercase }}</a
+  >
+</div>
+
+<table *ngIf="contacts.length; else noContact" class="table">
+  <thead>
+    <tr>
+      <th>{{ "num" | titlecase }}</th>
+      <th>{{ "Full Name" | titlecase }}</th>
+      <th>{{ "Email" | titlecase }}</th>
+      <th>{{ "date" | titlecase }}</th>
+      <th>{{ "Phone" | titlecase }}</th>
+      <th>{{ "edit" | titlecase }}</th>
+      <th>{{ "delete" | titlecase }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      [ngClass]="odd ? 'alert-success' : 'bg-light'"
+      *ngFor="let contact of contacts; index as i; odd as odd" [routerLink]="['contact-details', contact._id]"
+      role="button"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ contact.firstName + " " + contact.lastName }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.birthday }}</td>
+      <td>{{ contact.phone }}</td>
+      <td>
+        <a [routerLink]="['edit-contact', contact._id]" class="btn btn-outline-dark" role="button"><i class="fa-solid fa-square-pen"></i></a>          
+      </td>
+      <td>
+        <button
+          class="btn btn-outline-danger"
+          (click)="deleteContact($event, contact._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noContact>{{
+  "Opss... no Contacts where found in the database!" | firstLetterUppercase
+}}</ng-template>

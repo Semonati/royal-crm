@@ -1,0 +1,23 @@
+<div [ngClass]="bgColor">
+  <h1 class="m-1">
+    <i [ngClass]="icon">{{icon}}</i>
+    {{ title | titlecase}} 
+    
+  </h1>
+  <p class="m-1">
+   {{subtitle | firstLetterUppercase}}
+   <!-- {{subtitle | titlecase}} -->
+  </p>
+  <hr>
+</div>
+
+
+ <div class="pipe">
+  <div class="center">
+  <h1>
+    <!-- {{randomNumber | randomNum}} -->
+    <!-- {{randomNumber | randomNum:3}} -->
+    <!-- {{randomNumber | randomNum:3:5}} -->
+  </h1>
+  </div>
+ </div>
