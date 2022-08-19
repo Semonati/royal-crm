@@ -4,7 +4,7 @@ import { Contact } from 'src/app/interfaces/contact';
 import { ContactsService } from '../contacts.service';
 
 @Component({
-  selector: 'app-edit-contact',
+  selector: 'edit-contact',
   templateUrl: './edit-contact.component.html',
   styles: [],
 })
@@ -20,10 +20,10 @@ export class EditContactComponent implements OnInit {
   ) {}
 
   onSubmit(contact: Contact) {
-    // contact.birthday = this.createdAt!;
+    contact.createdAt = this.createdAt!;
     contact._id = this.id!;
     this.CS.edit(contact);
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['contacts']);
   }
 
   resetForm() {
@@ -38,7 +38,7 @@ export class EditContactComponent implements OnInit {
       this.id = _id;
       this.CS.getContact(_id!, (contact: Contact) => {
         this.contact = contact;
-        // this.createdAt = contact.birthday;
+        this.createdAt = contact.createdAt;
       });
     });
   }

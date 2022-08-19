@@ -3,8 +3,9 @@ export interface Contact {
   firstName: string;
   lastName: string;
   email: string;
-  birthday: Date;
   // birthday: string;
+  birthday: Date | string;
+  createdAt?: Date;
   phone: string;
   age: number;
   address: Address;

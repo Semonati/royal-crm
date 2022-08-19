@@ -11,8 +11,8 @@ export class ContactsService {
       firstName: 'User',
       lastName: 'Admin',
       email: 'admin@gmail.com',
-      birthday: new Date('August 3,1994'),
       phone: '050-1231231',
+      birthday: new Date(),
       age: 22,
       address: {
         country: 'Israel',
@@ -21,13 +21,14 @@ export class ContactsService {
         houseNumber: 12,
         zip: 123456,
       },
+      createdAt:new Date(),
     },
     {
       _id: '586',
       firstName: 'Angular',
       lastName: 'Admin',
       email: 'angular@gmail.com',
-      birthday: new Date('August 12,2000'),
+      birthday: new Date(),
       phone: '050-0000000',
       age: 22,
       address: {
@@ -37,6 +38,7 @@ export class ContactsService {
         houseNumber: 25,
         zip: 123123,
       },
+      createdAt:new Date(),
     },
   ];
   constructor() {}
@@ -47,7 +49,9 @@ export class ContactsService {
 
   add(contact: Contact) {
     contact._id = String(this.contacts.length + 1) + new Date() + Math.random();
-    return this.contacts.push({ ...contact, birthday: new Date() });
+    contact.createdAt = new Date();
+    this.contacts.push(contact);
+    return; 
   }
 
   delete(id: string) {

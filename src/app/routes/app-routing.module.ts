@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-
 import { ContactsComponent } from "../pages/contacts/contacts.component";
 import { CustomresPageComponent } from "../pages/customers/customres-page/customres-page.component";
 import { LoginPageComponent } from "../pages/login-page/login-page.component";
@@ -15,6 +14,10 @@ import { EditContactComponent } from "../pages/contacts/edit-contact/edit-contac
 
 
 const routers: Routes = [
+  {
+    path: '',
+    component: LoginPageComponent,
+  },
   {
     path: 'contacts',
     component: ContactsComponent,
@@ -57,8 +60,7 @@ const routers: Routes = [
   },
   {
     path: '**',
-    component: LoginPageComponent,
-    // component: PageNotFoundComponent,
+    component: PageNotFoundComponent,
   },
 ];
 

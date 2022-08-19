@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Contact } from '../../interfaces/contact';
 import { ContactsService } from './contacts.service';
 
@@ -10,13 +9,14 @@ import { ContactsService } from './contacts.service';
 })
 export class ContactsComponent {
   contacts: Contact[] = [];
-
+  
   constructor(private CS: ContactsService) {
     this.contacts = CS.getAll();
   }
 
   deleteContact(e: MouseEvent,id:string) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     this.CS.delete(id);
+    this.contacts = this.CS.getAll();
   }
 }

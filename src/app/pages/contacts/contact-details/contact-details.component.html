@@ -5,7 +5,7 @@
 ></page-header>
 
 <div class="my-2">
-  <a routerlink="/contacts" class="btn btn-outline-dark"
+  <a routerLink="/contacts" class="btn btn-outline-dark"
     ><i class="fas fa-arrow-alt-circle-left"></i> {{ "back" | titlecase }}
   </a>
 </div>
@@ -41,9 +41,9 @@
               <table class="table m-0">
                 <thead>
                   <tr>
-                    <!-- <th>
-                        {{ "state" | titlecase }}
-                      </th> -->
+                    <th *ngIf="contact.address.state">
+                      {{ "state" | titlecase }}
+                    </th>
                     <th>{{ "country" | titlecase }}</th>
                     <th>{{ "city" | titlecase }}</th>
                     <th>{{ "street" | titlecase }}</th>
@@ -53,9 +53,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <!-- <td>
-                        {{ contact.address.state | titlecase }}
-                      </td> -->
+                    <td *ngIf="contact.address.state">
                     <td>{{ contact.address.country }}</td>
                     <td>{{ contact.address.city }}</td>
                     <td>{{ contact.address.street }}</td>
