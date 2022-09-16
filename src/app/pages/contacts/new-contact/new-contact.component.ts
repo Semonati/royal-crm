@@ -10,11 +10,10 @@ import { ContactsService } from '../contacts.service';
   styles: [],
 })
 export class NewContactComponent {
-  constructor(private CS: ContactsService, private routerService: Router) {}
+  constructor(private CS: ContactsService, private router: Router) {}
 
   onSubmit(contact: Contact) {
-    this.CS.add(contact);
-    this.routerService.navigate(['/contacts']);
+    this.CS.add(contact, () => this.router.navigate(['/contacts']));
   }
 
   resetForm(form: NgForm) {

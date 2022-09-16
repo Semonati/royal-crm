@@ -1,0 +1,122 @@
+<page-header
+  title="contacts"
+  subtitle="this is the contacts page"
+  icon="fas fa-users"
+></page-header>
+
+
+<div *ngIf="dataReceived; else loader">
+  <div class="d-flex justify-content-between">
+    <div class="my-2">
+      <a
+        routerLink="add-contact"
+        class="btn btn-outline-dark"
+        title="Add new contact"
+        ><i class="fa fa-plus-circle"></i> {{ "add contact" | titlecase }}</a
+      >
+    </div>
+
+    <display-mode-controllers
+      [controllers]="controllers"
+      (onChangeDisplay)="onChangeDisplay($event)"
+    ></display-mode-controllers>
+  </div>
+
+  <search-bar
+    *ngIf="contacts && contacts.length"
+    [categorys]="categories"
+    [array]="contactRowData"
+    (arrayFiltered)="onSearch($event)"
+  ></search-bar>
+
+  <div *ngIf="contacts && contacts.length; else nocontacts">
+    <contacts-table
+      *ngIf="display === 'table'"
+      [contacts]="contacts"
+      (onDeleteContact)="deleteContact($event)"
+    ></contacts-table>
+
+    <contacts-folder
+      [contacts]="contacts"
+      *ngIf="display === 'folder'"
+    ></contacts-folder>
+  </div>
+
+  <ng-template #nocontacts>
+    <div class="p-2">
+      {{ "no contacts where found in the database" | firstLetterUppercase }}
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <!-- <spinner-loader></spinner-loader> -->
+</ng-template>
+
+
+
+<!-- 
+<div class="mb-2">
+  <a
+    routerLink="add-contact"
+    class="btn btn-outline-primary"
+    title="Add new contact"
+    role="button"
+    >{{ "add contact" | firstLetterUppercase }}</a
+  >
+</div>
+
+<search-bar
+  [categorys]="categorys"
+  (arrayFiltered)="onSearch($event)"
+  [array]="contacts"
+></search-bar>
+
+<table *ngIf="contacts; else noContact" class="table">
+  <thead>
+    <tr>
+      <th>{{ "num" | titlecase }}</th>
+      <th>{{ "Full Name" | titlecase }}</th>
+      <th>{{ "Email" | titlecase }}</th>
+      <th>{{ "Phone" | titlecase }}</th>
+      <th>{{ "age" | titlecase }}</th>
+      <th>{{ "edit" | titlecase }}</th>
+      <th>{{ "delete" | titlecase }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      [ngClass]="odd ? 'alert-success' : 'bg-light'"
+      *ngFor="let contact of contacts; index as i; odd as odd"
+      [routerLink]="['contact-details', contact._id]"
+      role="button"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ contact.firstName + " " + contact.lastName }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.phone }}</td>
+      <td>{{ contact.age }}</td>
+      <td>
+        <a
+          [routerLink]="['edit-contact', contact._id]"
+          class="btn btn-outline-dark"
+          role="button"
+          ><i class="fa-solid fa-square-pen"></i
+        ></a>
+      </td>
+      <td>
+        <button
+          class="btn btn-outline-danger"
+          (click)="deleteContact($event, contact._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noContact>{{
+  "Opss... no Contacts where found in the database!" | firstLetterUppercase
+}}</ng-template> -->

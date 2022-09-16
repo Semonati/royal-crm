@@ -4,12 +4,20 @@
   icon="fas fa-user-edit"
 ></page-header>
 
-<contact-form   *ngIf="contact; else noContact"
-  [contact]="contact"
-  (reset)="resetForm()"
-  (submit)="onSubmit($event)"></contact-form>
+<div *ngIf="dataReceived; else loader">
+  <contact-form
+    *ngIf="contact; else noContact"
+    [contact]="contact"
+    (reset)="resetForm()"
+    (submit)="onSubmit($event)"
+  ></contact-form>
 
-<ng-template #noContact>{{
-  "Oops it looks like there is no customer with this ID in the database"
-    | firstLetterUppercase
-}}</ng-template>
+  <ng-template #noContact>{{
+    "Oops it looks like there is no contact with this ID in the database"
+      | firstLetterUppercase
+  }}</ng-template>
+</div>
+
+<ng-template #loader>
+  <!-- <spinner-loader></spinner-loader> -->
+</ng-template>

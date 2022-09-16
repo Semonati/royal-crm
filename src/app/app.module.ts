@@ -17,11 +17,24 @@ import { TopNavLinkComponent } from './layout/header/top-nav/top-nav-link/top-na
 import { SideNavLinkComponent } from './layout/main/side-nav/side-nav-link/side-nav-link.component';
 import { routingComponentes } from './routes/app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './pages/Users/login-page/login-page.component';
 import { UnloggedComponent } from './layout/header/top-nav/right-top-nav/unlogged/unlogged.component';
 import { LoggedComponent } from './layout/header/top-nav/right-top-nav/logged/logged.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactFormComponent } from './pages/contacts/contact-form/contact-form.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
+import { CustomerFormComponent } from './pages/customers/customer-form/customer-form.component';
+import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
+import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
+import { CustomersFoldersComponent } from './pages/customers/customer-display-mode/customers-folders/customers-folders.component';
+import { CustomersTableComponent } from './pages/customers/customer-display-mode/customers-table/customers-table.component';
+import { ContactsTableComponent } from './pages/contacts/contacts-display-mode/contacts-table/contacts-table.component';
+import { ContactsFolderComponent } from './pages/contacts/contacts-display-mode/contacts-folder/contacts-folder.component';
 
 
 @NgModule({
@@ -46,9 +59,25 @@ import { ContactFormComponent } from './pages/contacts/contact-form/contact-form
     LoginPageComponent,
     AboutPageComponent,
     ContactFormComponent,
+    SearchBarComponent,
+    DisplayModeControllersComponent,
+    CustomerFormComponent,
+    CustomerDetailsComponent,
+    EditCustomerComponent,
+    CustomersFoldersComponent,
+    CustomersTableComponent,
+    ContactsTableComponent,
+    ContactsFolderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

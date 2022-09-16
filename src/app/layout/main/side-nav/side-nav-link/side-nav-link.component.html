@@ -1,6 +1,6 @@
 <li cclass="col-12 col-md-6 col-xl-4">
   <a [routerLink]="link.link" routerLinkActive="top-nav-active" class="nav-link text-light px-2 px-sm-3">
-    <i [ngClass]="link.icon"></i> 
+    <i [class]="link.icon" [title]="link.text"></i>
     <span class="mx-2 d-none d-lg-inline">{{link.text|titlecase}}</span>     
   </a>
 </li>

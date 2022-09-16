@@ -6,19 +6,12 @@ import { Links } from 'src/app/interfaces/links';
   templateUrl: './side-nav-link.component.html',
   styles: [
     `
-      li {
-        list-style-type: none;
-      }
-      .top-nav-active {
-        font-weight: bold;
-        background: gray;
+      .active {
+        background: #000;
       }
     `,
   ],
 })
 export class SideNavLinkComponent {
-  // @Input() text: string = '';
-  // @Input() icon: string = '';
-  // @Input() link: string = '';
   @Input() link: Links = { text: "", icon: '', link: '' };
 }

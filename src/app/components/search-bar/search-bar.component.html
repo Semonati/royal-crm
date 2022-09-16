@@ -1,0 +1,20 @@
+<div *ngIf="categorys.length" class="input-group col-12 my-3">
+  <div class="input-group-append">
+    <select 
+    [value]="category.value"
+    (change)="onCategoryChange($event)"
+    class="form-control p-2"
+    >
+      <option *ngFor="let category of categorys" [value]="category.value">
+        {{ category.name | firstLetterUppercase }}
+      </option>
+    </select>
+  </div>
+  
+  <input
+    type="search"
+    class="form-control"
+    [placeholder]="placeholderText"
+    (input)="onSearch($event)"
+  />
+</div>

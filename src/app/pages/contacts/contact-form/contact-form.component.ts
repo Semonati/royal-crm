@@ -13,7 +13,6 @@ export class ContactFormComponent {
   @Input() contact: Contact = {
     firstName: '',
     lastName: '',
-    birthday: new Date().toLocaleString(),
     age:0,
     email: '',
     phone: '',
@@ -25,8 +24,11 @@ export class ContactFormComponent {
       houseNumber: 0,
       zip: 0,
     },
+    birthday: new Date().toLocaleString(),
   };
 
+  @Input() btnText: string = 'submit';
+  
   onSubmit({ valid, value }: NgForm) {
     if (valid) this.submit.emit(value);
   }

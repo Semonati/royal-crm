@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
   selector: 'app-logged',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
   ]
 })
 export class LoggedComponent {
+  constructor(private US: UserService) {}
 
-  
-
+  logout() {
+    this.US.logout();
+  }
 }

@@ -1,16 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Controller } from 'src/app/components/display-mode-controllers/controller';
+import { Category } from 'src/app/components/search-bar/category';
+import { Customer } from '../../../interfaces/customer';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'customres-page',
   templateUrl: './customres-page.component.html',
-  styles: [
-  ]
+  styles: []
 })
-export class CustomresPageComponent implements OnInit {
+export class CustomresPageComponent implements OnInit, OnDestroy {
+  customersRowData: Array<Customer> = [];
+  customers: Array<Customer> = [];
+  categories: Array<Category> = [
+    { name: 'First Name', value: 'firstName' },
+    { name: 'Last name', value: 'lastName' },
+    { name: 'Email', value: 'email' },
+    { name: 'Phone', value: 'phone' },
+    { name: 'Notes', value: 'notes' },
+  ];
+  controllers: Array<Controller> = [
+    { icon: 'fa fa-table-list', value: 'table' },
+    { icon: 'fa fa-folder', value: 'folder' },
+  ];
+  display: string = 'table';
+  dataReceived: boolean = false;
+  unsubscribeGetAll: Function = () => {};
 
-  constructor() { }
+  constructor(private CS: CustomerService) {}
 
-  ngOnInit(): void {
+  onSearch(array: Customer[]) {
+    this.customers = array;
   }
 
+  deleteCustomer(array: Array<Customer>) {
+    this.customersRowData = array;
+    this.customers = this.customersRowData;
+  }
+
+  onChangeDisplay(display: string) {
+    this.display = display;
+  }
+
+  ngOnInit() {
+    this.CS.getAll((customers: Customer[], unsubscribeGetAll: Function) => {
+      this.customersRowData = customers;
+      this.customers = this.customersRowData;
+      this.dataReceived = true;
+      this.unsubscribeGetAll = unsubscribeGetAll;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeGetAll();
+  }
 }

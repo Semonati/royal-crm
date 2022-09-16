@@ -10,5 +10,4 @@ export class PageHeaderComponent {
   @Input() subtitle: string = '';
   @Input() icon: string = '';
   @Input() bgColor: string = 'alert-success rounded-3 p-2';
-  // randomNumber: number = 7;
 }

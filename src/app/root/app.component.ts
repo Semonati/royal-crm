@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Customera Page';
-  subTitle = 'This is the customera page';
-  icon = '';
-  to = 'To';
-  text = 'Text';
+  title = 'Royal-crm';
 }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "royal-crm-natan-semo": {
+      "hosting": {
+        "royal-crm": [
+          "royal-crm-natan-semo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "royal-crm-natan-semo"
+  }
+}

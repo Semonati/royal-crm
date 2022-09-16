@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styles: [],
 })
 export class HeaderComponent {
-  to = 'Nati';
-  text = 'bmigf';
 }
