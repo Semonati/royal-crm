@@ -1,5 +1,5 @@
 import { Component, Input,Output,EventEmitter } from '@angular/core';
-import { Controller } from '../../interfaces/controller';
+import { Controller } from './controller';
 
 @Component({
   selector: 'display-mode-controllers',

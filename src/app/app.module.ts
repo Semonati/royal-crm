@@ -35,6 +35,7 @@ import { CustomersFoldersComponent } from './pages/customers/customer-display-mo
 import { CustomersTableComponent } from './pages/customers/customer-display-mode/customers-table/customers-table.component';
 import { ContactsTableComponent } from './pages/contacts/contacts-display-mode/contacts-table/contacts-table.component';
 import { ContactsFolderComponent } from './pages/contacts/contacts-display-mode/contacts-folder/contacts-folder.component';
+import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-loader.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ContactsFolderComponent } from './pages/contacts/contacts-display-mode/
     CustomersTableComponent,
     ContactsTableComponent,
     ContactsFolderComponent,
+    SpinnerLoaderComponent,
   ],
   imports: [
     BrowserModule,
