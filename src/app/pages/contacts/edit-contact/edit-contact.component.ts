@@ -23,7 +23,7 @@ export class EditContactComponent implements OnInit {
   onSubmit(contact: Contact) {
     contact.createdAt = this.createdAt!;
     contact._id = this.id!;
-    this.CS.edit(contact, this.id!, () =>
+    this.CS.edit(contact, contact._id, () =>
       this.router.navigate(['/contacts'])
     );
   }

@@ -10,6 +10,7 @@
   </a>
 </div>
 
+<div *ngIf="dataReceived; else loader">
 <div *ngIf="contact; else noContact">
   <div class="center">
     <div class="col-12 col-md-11 col-lg-10">
@@ -76,8 +77,13 @@
   </div>
 </div>
 
-<ng-template #noContact="">
+<ng-template #noContact>
   <div class="p-2">
     {{ "no such Customer where found in the database" | firstLetterUppercase }}
   </div>
+</ng-template>
+
+</div>
+<ng-template #loader>
+  <!-- <spinner-loader></spinner-loader> -->
 </ng-template>

@@ -2,7 +2,7 @@
   #contactForm="ngForm"
   novalidate="novalidate"
   autocomplete="off"
-  (ngSubmit)="onSubmit(contactForm)"
+
   class="form border rounded p-2"
 >
   <div class="center">
@@ -41,6 +41,7 @@
       <label for="lastName"
         ><span class="text-danger">*</span> {{ "last name" | titlecase }}</label
       ><input
+        id="lastName"
         [(ngModel)]="contact.lastName"
         #lastNameField="ngModel"
         name="lastName"
@@ -234,13 +235,12 @@
         }}</span>
       </div>
       <div class="col-md-5 mb-2 form-group">
-        <label for="zip"
-          ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
+        <label for="zip">{{ "zip" | titlecase }}</label
         ><input
           [(ngModel)]="contact.address.zip"
           id="zip"
-          name="number"
-          type="text"
+          name="zip"
+          type="number"
           class="form-control"
           minlength="2"
           #zipField="ngModel"
@@ -288,8 +288,7 @@
       }}</span>
     </div>
     <div class="col-md-5 mb-2 form-group">
-      <label for="age"
-        ><span class="text-danger">*</span> {{ "Age" | titlecase }}</label
+      <label for="age">{{ "Age" | titlecase }}</label
       ><input
         id="age"
         [(ngModel)]="contact.age"
@@ -328,7 +327,8 @@
     />
 
     <button
-      type="submit"
+    (click)="onSubmit(contactForm)"
+      type="button"
       class="btn btn-success ms-3"
       [disabled]="contactForm.form.invalid"
     >

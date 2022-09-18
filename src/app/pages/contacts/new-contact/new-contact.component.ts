@@ -13,7 +13,7 @@ export class NewContactComponent {
   constructor(private CS: ContactsService, private router: Router) {}
 
   onSubmit(contact: Contact) {
-    this.CS.add(contact, () => this.router.navigate(['/contacts']));
+    this.CS.add(contact)
   }
 
   resetForm(form: NgForm) {

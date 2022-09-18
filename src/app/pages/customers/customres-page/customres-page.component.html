@@ -9,6 +9,7 @@
   <div class="d-flex justify-content-between">
     <div class="my-2">
       <a
+      *ngIf="customers && customers.length; else backToList"
         routerLink="new-customer"
         class="btn btn-outline-dark"
         title="Add new customer"
@@ -23,7 +24,6 @@
   </div>
 
   <search-bar
-    *ngIf="customers && customers.length"
     [categorys]="categories"
     [array]="customersRowData"
     (arrayFiltered)="onSearch($event)"
@@ -46,6 +46,15 @@
     <div class="p-2">
       {{ "no Customers where found in the database" | firstLetterUppercase }}
     </div>
+  </ng-template>
+  
+  <ng-template #backToList>
+    <a
+        routerLink="new-customer"
+        class="btn btn-outline-dark"
+        title="Add new customer"
+        ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
+      >
   </ng-template>
 </div>
 

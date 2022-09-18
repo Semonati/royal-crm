@@ -5,15 +5,13 @@ import { ContactsService } from '../../contacts.service';
 @Component({
   selector: 'contacts-table',
   templateUrl: './contacts-table.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class ContactsTableComponent {
   @Input() contacts: Contact[] = [];
   @Output() onDeleteContact = new EventEmitter();
 
-  constructor(private CS: ContactsService) {
-  }
+  constructor(private CS: ContactsService) {}
 
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
@@ -24,4 +22,3 @@ export class ContactsTableComponent {
     });
   }
 }
-

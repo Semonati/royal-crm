@@ -13,7 +13,10 @@ export class NewCustomerComponent {
   constructor(private CS: CustomerService, private router: Router) {}
 
   onSubmit(customer: Customer) {
-    this.CS.add(customer, () => this.router.navigate(['/customers']));
+    this.CS.add(customer, () => {
+      this.router.navigate(['/customers']);
+      return;
+    });
   }
 
 }

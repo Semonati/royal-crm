@@ -5,8 +5,7 @@ import { CustomerService } from '../../customer.service';
 @Component({
   selector: 'customers-table',
   templateUrl: './customers-table.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class CustomersTableComponent {
   @Input() customers: Customer[] = [];
@@ -22,5 +21,4 @@ export class CustomersTableComponent {
       this.onDeleteCustomer.emit(customers);
     });
   }
-
 }

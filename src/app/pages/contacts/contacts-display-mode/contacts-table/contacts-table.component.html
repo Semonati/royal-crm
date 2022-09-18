@@ -4,9 +4,9 @@
         <th>{{ "Num." | titlecase }}</th>
         <th>{{ "First Name" | titlecase }}</th>
         <th>{{ "Last Name" | titlecase }}</th>
+        <th>{{ "Age" | titlecase }}</th>
         <th>{{ "Email" | titlecase }}</th>
         <th>{{ "Phone" | titlecase }}</th>
-        <th>{{ "Birthday" | titlecase }}</th>
         <th>{{ "Edit" | titlecase }}</th>
         <th>{{ "Delete" | titlecase }}</th>
       </tr>
@@ -20,9 +20,9 @@
         <td>{{ i + 1}}</td>
         <td>{{ contact.firstName | firstLetterUppercase }}</td>
         <td>{{ contact.lastName | firstLetterUppercase }}</td>
+        <td>{{ contact.age }}</td>
         <td>{{ contact.email }}</td>
         <td>{{ contact.phone }}</td>
-        <td>{{ contact.birthday | date: "mediumDate" }}</td>
         <td><a class="btn btn-outline-dark" [routerLink]="['edit-contact', contact._id]" role="button">
             <i class="fas fa-pen"></i>
           </a></td>

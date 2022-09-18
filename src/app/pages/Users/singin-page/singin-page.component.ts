@@ -22,7 +22,7 @@ export class SinginPageComponent {
         if (user) {
           form.resetForm();
           this.error = false;
-          return this.router.navigate(['/customers']);
+          return this.router.navigate(['/contacts']);
         }
 
         this.error = true;
@@ -39,7 +39,7 @@ export class SinginPageComponent {
 
   signinWithGoogle(){
     this.US.signupAndLoginWithGoogle((user: any) : any=>{
-      if(user) return this.router.navigate(['/customers']);
+      if(user) return this.router.navigate(['/contacts']);
     })
   }
 

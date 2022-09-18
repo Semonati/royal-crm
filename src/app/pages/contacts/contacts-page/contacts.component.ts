@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Controller } from 'src/app/components/display-mode-controllers/controller';
-import { Category } from 'src/app/components/search-bar/category';
+import { Controller } from 'src/app/interfaces/controller';
+import { Category } from 'src/app/interfaces/category';
 import { Contact } from '../../../interfaces/contact';
 import { ContactsService } from '../contacts.service';
 
@@ -15,9 +15,9 @@ export class ContactsComponent implements OnInit, OnDestroy {
   categories: Array<Category> = [
     { name: 'First Name', value: 'firstName' },
     { name: 'Last name', value: 'lastName' },
+    { name: 'Age', value: 'age' },
     { name: 'Email', value: 'email' },
     { name: 'Phone', value: 'phone' },
-    { name: 'Notes', value: 'notes' },
   ];
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
@@ -47,7 +47,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
       this.contactRowData = customers;
       this.contacts = this.contactRowData;
       this.dataReceived = true;
-      this.unsubscribeGetAll = unsubscribeGetAll;
+      this.unsubscribeGetAll = unsubscribeGetAll;      
     });
   }
 

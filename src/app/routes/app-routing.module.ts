@@ -20,60 +20,55 @@ const routers: Routes = [
   {
     path: 'customers',
     component: CustomresPageComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'customers/new-customer',
     component: NewCustomerComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'customers/customer-details/:id',
     component: CustomerDetailsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'customers/edit-customer/:id',
     component: EditCustomerComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
-
   {
     path: 'contacts',
     component: ContactsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'contacts/add-contact',
     component: NewContactComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'contacts/contact-details/:id',
     component: ContactDetailsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'contacts/edit-contact/:id',
     component: EditContactComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'signup',
     component: SinginPageComponent,
+    canActivate: [LoggedGuard] 
   },
   {
     path: '',
     component: LoginPageComponent,
-    //  canActivate: [LoggedGuard] 
   },
   {
     path: 'about',
     component: AboutPageComponent,
-  },
-  {
-    path: 'login',
-    component: LoginPageComponent,
   },
   {
     path: '**',

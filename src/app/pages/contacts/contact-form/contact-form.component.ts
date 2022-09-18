@@ -28,11 +28,11 @@ export class ContactFormComponent {
   };
 
   @Input() btnText: string = 'submit';
-  
-  onSubmit({ valid, value }: NgForm) {
+
+  onSubmit({ valid, value }: NgForm){
     if (valid) this.submit.emit(value);
   }
-
+  
   resetForm(form: NgForm) {
     form.resetForm({
       firstName: '',

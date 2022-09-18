@@ -2,7 +2,7 @@
   #customerForm="ngForm"
   novalidate="novalidate"
   autocomplete="off"
-  (ngSubmit)="onSubmit(customerForm)"
+
   class="form border rounded p-2"
 >
   <div class="center">
@@ -292,7 +292,8 @@
     />
 
     <button
-      type="submit"
+      type="button"
+      (click)="onSubmit(customerForm)"
       class="btn btn-success ms-3"
       [disabled]="customerForm.form.invalid"
     >

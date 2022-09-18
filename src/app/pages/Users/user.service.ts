@@ -9,20 +9,21 @@ import {
   signOut,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/interfaces/login';
+import { Signup } from 'src/app/interfaces/signup';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private auth: Auth, private router: Router) { }
 
   signupWithEmailAndPassword(user: Signup, cb: Function) {
     const { email, password } = user;
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
         cb(credentials);
-        console.log('User signup with email & password successfuly!');
       })
       .catch(() => cb(null));
   }
@@ -36,36 +37,25 @@ export class UserService {
   }
 
   loginWithEmailAndPassword(user: Login, cb: Function) {
-    const { email, password } = user;  
+    const { email, password } = user;
     signInWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
-        console.log(credentials);
         cb(credentials);
       })
       .catch(() => cb(null));
   }
 
-  signupAndLoginWithGoogle(cb: Function){
+  signupAndLoginWithGoogle(cb: Function) {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(this.auth,provider)
-    .then((data)=>{
-      cb(data);
-    })
-    .catch(()=>{})
+    signInWithPopup(this.auth, provider)
+      .then((data) => {
+        cb(data);
+      })
+      .catch(() => { })
   }
 
-  getUserStauts(cb:Function){
-    return onAuthStateChanged(this.auth, (user)=> cb(user))
+  getUserStauts(cb: Function) {
+    return onAuthStateChanged(this.auth, (user) => cb(user))
   }
-}
 
-
-interface Signup {
-  email: string;
-  password: string;
-}
-
-interface Login {
-  email: string;
-  password: string;
 }

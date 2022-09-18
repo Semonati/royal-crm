@@ -8,10 +8,12 @@ import {
   DocumentData,
   Firestore,
   getDoc,
+  setDoc,
   onSnapshot,
   serverTimestamp,
   updateDoc,
 } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { Customer } from '../../interfaces/customer';
 
 @Injectable({
@@ -22,12 +24,15 @@ export class CustomerService {
     this.FS,
     'customers'
   );
+  db = Firestore;
 
-  constructor(private FS: Firestore) {}
+
+
+  constructor(private FS: Firestore, private router: Router) { }
 
   getAll(cb: Function) {
     let customers: any = [];
-    
+
     const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((customer) => {
         customers.push({

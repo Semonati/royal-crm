@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category } from './category';
+import { Category } from '../../interfaces/category';
 
 @Component({
   selector: 'search-bar',
@@ -30,7 +30,7 @@ export class SearchBarComponent implements OnInit {
         .trim()
         .includes(term.toLowerCase().trim())
     );
-    this.arrayFiltered.emit(this.arrayFiltered);
+    this.arrayFiltered.emit(arrayFiltered);
   }
 
   ngOnInit(): void { 

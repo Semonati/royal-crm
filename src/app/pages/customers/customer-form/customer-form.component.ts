@@ -30,6 +30,7 @@ export class CustomerFormComponent {
 
   onSubmit({ valid, value }: NgForm) {
     if (valid) this.submit.emit(value);
+    return;
   }
 
   resetForm(form: NgForm) {
