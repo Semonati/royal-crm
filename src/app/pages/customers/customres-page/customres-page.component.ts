@@ -22,6 +22,7 @@ export class CustomresPageComponent implements OnInit, OnDestroy {
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
+    { icon: 'fa fa-address-card', value: 'card' },
   ];
   display: string = 'table';
   dataReceived: boolean = false;

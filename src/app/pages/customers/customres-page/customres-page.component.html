@@ -9,7 +9,7 @@
   <div class="d-flex justify-content-between">
     <div class="my-2">
       <a
-      *ngIf="customers && customers.length; else backToList"
+        *ngIf="customers && customers.length; else backToList"
         routerLink="new-customer"
         class="btn btn-outline-dark"
         title="Add new customer"
@@ -40,6 +40,11 @@
       [customers]="customers"
       *ngIf="display === 'folder'"
     ></customers-folders>
+
+    <customers-card
+      [customers]="customers"
+      *ngIf="display === 'card'"
+    ></customers-card>
   </div>
 
   <ng-template #noCustomers>
@@ -47,14 +52,14 @@
       {{ "no Customers where found in the database" | firstLetterUppercase }}
     </div>
   </ng-template>
-  
+
   <ng-template #backToList>
     <a
-        routerLink="new-customer"
-        class="btn btn-outline-dark"
-        title="Add new customer"
-        ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
-      >
+      routerLink="new-customer"
+      class="btn btn-outline-dark"
+      title="Add new customer"
+      ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
+    >
   </ng-template>
 </div>
 
