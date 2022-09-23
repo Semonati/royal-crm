@@ -4,8 +4,11 @@
     class="cursor p-1 border rounded m-1 col-10 col-md-3 col-sm-4 col-xl-2"
     [routerLink]="['contact-details', contact._id]"
   >
-    <h6 class="d-flex justify-content-start ms-1"> <i class="fa fa-address-book me-1"></i> {{ contact.firstName + " " + contact.lastName | titlecase }}</h6>
-    <hr >
+    <h6 class="d-flex justify-content-start ms-1">
+      <i class="fa fa-address-book me-1"></i>
+      {{ contact.firstName + " " + contact.lastName | titlecase }}
+    </h6>
+    <hr />
     <p class="ms-1">{{ contact.email }}</p>
     <p class="ms-1">{{ contact.phone }}</p>
   </div>

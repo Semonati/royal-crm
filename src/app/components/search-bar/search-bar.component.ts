@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category } from './category';
+import { Category } from '../../interfaces/category';
 
 @Component({
   selector: 'search-bar',

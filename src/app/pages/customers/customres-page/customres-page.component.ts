@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Controller } from 'src/app/components/display-mode-controllers/controller';
-import { Category } from 'src/app/components/search-bar/category';
+import { Category } from 'src/app/interfaces/category';
 import { Customer } from '../../../interfaces/customer';
 import { CustomerService } from '../customer.service';
 

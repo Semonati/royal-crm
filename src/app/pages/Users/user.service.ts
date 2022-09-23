@@ -29,9 +29,6 @@ export class UserService {
 
   logout() {
     signOut(this.auth)
-      .then(() => {
-        console.log('User logged out!');
-      })
     .catch((error) => console.log(error));
   }
 
@@ -42,7 +39,7 @@ export class UserService {
       .then((credentials) => {
         cb(credentials);
       })
-    .catch(() => cb(null));
+    .catch(() => {});
   }
 
   signupAndLoginWithGoogle(cb: Function) {

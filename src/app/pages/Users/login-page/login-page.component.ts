@@ -30,7 +30,6 @@ export class LoginPageComponent {
           this.error = false;
           form.resetForm();
           this.counter++;
-          console.log(this.counter);
         }, 4000);
 
         if (this.counter === 2) {
@@ -60,7 +59,5 @@ export class LoginPageComponent {
       if (user) this.router.navigate(['/contacts']);
     });
   }
-
-  // @ViewChild('myNameElem') myNameElem: ElementRef = "";
  
 }

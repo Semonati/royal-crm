@@ -29,8 +29,6 @@ export class SinginPageComponent {
           form.resetForm();
           this.error = false;
           this.router.navigate(['']);
-          console.log("error in singin-page");
-
         }, 4000);
       });
     }

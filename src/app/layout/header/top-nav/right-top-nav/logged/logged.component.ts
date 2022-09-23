@@ -12,7 +12,6 @@ import { UserService } from 'src/app/pages/Users/user.service';
     color:white;
     background-color:purple;
     border-radius: 50%;
-    /* height */
     }
     p{
       height:100%;
