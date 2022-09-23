@@ -24,6 +24,8 @@ export class ContactsService {
     'contacts'
   );
 
+  nameAndEmails:Array<string> = [];
+
   constructor(private FS: Firestore, private router: Router) { }
 
   getAll(cb: Function) {
@@ -71,4 +73,5 @@ export class ContactsService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
+
 }

@@ -10,16 +10,15 @@ import { UserService } from '../user.service';
 })
 export class SinginPageComponent {
   error: boolean = false;
-  
+
   constructor(private US: UserService, private router: Router) { }
 
   onSubmit(form: NgForm) {
     const { valid, value } = form;
     if (valid) {
-      this.US.signupWithEmailAndPassword(value, (user: any): any => {
-        console.log(user);
-        
+      this.US.signupWithEmailAndPassword(value, (user: any,email:string): any => {
         if (user) {
+          this.US.loggedWithGoogle()
           form.resetForm();
           this.error = false;
           return this.router.navigate(['/contacts']);
@@ -31,19 +30,22 @@ export class SinginPageComponent {
           this.error = false;
           this.router.navigate(['']);
           console.log("error in singin-page");
-          
+
         }, 4000);
       });
     }
   }
 
-  signinWithGoogle(){
-    this.US.signupAndLoginWithGoogle((user: any) : any=>{
-      if(user) return this.router.navigate(['/contacts']);
+  signinWithGoogle() {
+    this.US.signupAndLoginWithGoogle((user: any): any => {      
+      if (user) {
+        return this.router.navigate(['/contacts']);
+      }
     })
   }
 
-  resetForm(form: NgForm){
+  resetForm(form: NgForm) {
     form.resetForm();
   }
+  
 }

@@ -8,7 +8,6 @@ import {
   signInWithPopup,
   signOut,
 } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { Login } from 'src/app/interfaces/login';
 import { Signup } from 'src/app/interfaces/signup';
 
@@ -17,15 +16,15 @@ import { Signup } from 'src/app/interfaces/signup';
 })
 export class UserService {
 
-  constructor(private auth: Auth, private router: Router) { }
+  constructor(private auth: Auth) { }
 
   signupWithEmailAndPassword(user: Signup, cb: Function) {
     const { email, password } = user;
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
-        cb(credentials);
+        cb(credentials, email);
       })
-      .catch(() => cb(null));
+    .catch(() => cb(null));
   }
 
   logout() {
@@ -33,16 +32,17 @@ export class UserService {
       .then(() => {
         console.log('User logged out!');
       })
-      .catch((error) => console.log(error));
+    .catch((error) => console.log(error));
   }
 
   loginWithEmailAndPassword(user: Login, cb: Function) {
     const { email, password } = user;
+    this.toLocalStorage(email,true);
     signInWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
         cb(credentials);
       })
-      .catch(() => cb(null));
+    .catch(() => cb(null));
   }
 
   signupAndLoginWithGoogle(cb: Function) {
@@ -51,11 +51,23 @@ export class UserService {
       .then((data) => {
         cb(data);
       })
-      .catch(() => { })
+    .catch(() => { })
   }
 
   getUserStauts(cb: Function) {
     return onAuthStateChanged(this.auth, (user) => cb(user))
   }
-
+  
+  loggedWithGoogle() {
+    const user = this.auth.currentUser?.displayName?.charAt(0);
+    return user;
+  }
+  
+  loggedWithEmailAndPassword() {
+    return localStorage.getItem("user");
+  }
+  toLocalStorage(userEmail:any,value:boolean){
+    if(!value) return localStorage.removeItem("user");
+    return localStorage.setItem("user", userEmail.charAt(0))
+  }
 }

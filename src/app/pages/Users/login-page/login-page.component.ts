@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -19,7 +19,7 @@ export class LoginPageComponent {
     const { value, valid } = form;
     if (valid) {
       this.US.loginWithEmailAndPassword(value, (user: any): any => {
-        if (user) {
+        if (user) {          
           form.resetForm();
           return this.router.navigate(['/contacts']);
         }
@@ -60,4 +60,7 @@ export class LoginPageComponent {
       if (user) this.router.navigate(['/contacts']);
     });
   }
+
+  // @ViewChild('myNameElem') myNameElem: ElementRef = "";
+ 
 }

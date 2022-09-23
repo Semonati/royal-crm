@@ -11,6 +11,57 @@
     (ngSubmit)="onSubmit(loginForm)"
     class="col-12 col-md-6 col-xl-4 p-4 alert-info rounded"
   >
+    <div class="row justify-content-center mt-2">
+      <div class="form-group mb-2 col-6">
+        <label for="firstName"
+          >{{ "first Name" | titlecase }} <span class="text-danger">*</span></label
+        >
+        <input
+          ngModel
+          id="firstName"
+          name="firstName"
+          type="text"
+          value=""
+          class="form-control"
+          autocomplete="off"
+          placeholder="John"
+          required
+          minlength="2"
+          #firstName="ngModel"
+          [ngClass]="{
+            'is-invalid': firstName.invalid && firstName.touched,
+            'is-valid': firstName.valid && firstName.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "first name mast be at list two characters" | firstLetterUppercase
+        }}</span>
+      </div>
+      <div class="form-group mb-2 col-6">
+        <label for="lastName"
+          >{{ "last Name" | titlecase }} <span class="text-danger">*</span></label
+        >
+        <input
+          ngModel
+          id="lastName"
+          name="lastName"
+          type="text"
+          class="form-control"
+          autocomplete="off"
+          placeholder="Doe"
+          required
+          minlength="2"
+          #lastName="ngModel"
+          [ngClass]="{
+            'is-invalid': lastName.invalid && lastName.touched,
+            'is-valid': lastName.valid && lastName.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "last name mast be at list two characters" | firstLetterUppercase
+        }}</span>
+      </div>
+    </div>
     <div class="form-group mb-2">
       <label for="email"
         >{{ "email" | titlecase }} <span class="text-danger">*</span></label

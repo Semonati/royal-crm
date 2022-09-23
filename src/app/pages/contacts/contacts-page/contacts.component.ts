@@ -22,6 +22,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
+    { icon: 'fa fa-address-card', value: 'card' },
   ];
   display: string = 'table';
   dataReceived: boolean = false;
@@ -43,11 +44,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.CS.getAll((customers: Contact[], unsubscribeGetAll: Function) => {
-      this.contactRowData = customers;
+    this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
+      this.contactRowData = contacts;
       this.contacts = this.contactRowData;
       this.dataReceived = true;
-      this.unsubscribeGetAll = unsubscribeGetAll;      
+      this.unsubscribeGetAll = unsubscribeGetAll;          
     });
   }
 

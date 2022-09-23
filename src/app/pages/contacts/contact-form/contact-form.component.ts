@@ -63,4 +63,5 @@ export class ContactFormComponent {
     let diff = today.getTime() - birthDate.getTime();
     return Math.floor(diff / (1000 * 3600 * 24) / 365);
   }
+  
 }
